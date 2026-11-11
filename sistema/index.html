@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronFit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>IronFit</h1>
+        <button id="btnSair" onclick="sair()" style="display:none">Sair</button>
+    </header>
+
+    <main>
+        <section id="telaLogin" class="card">
+            <h2>Login</h2>
+            <form id="formLogin">
+                <label>Usuário</label>
+                <input type="text" id="username" required>
+
+                <label>Senha</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Entrar</button>
+                <p id="mensagemLogin"></p>
+            </form>
+        </section>
+
+        <section id="painel" class="card" style="display:none">
+            <h2>Painel Administrativo</h2>
+            <p id="nomeUsuario"></p>
+
+            <button onclick="mostrarTela('telaAlunos')">Alunos</button>
+            <button onclick="mostrarTela('telaPersonals'); listarPersonals()">Personals</button>
+            <button onclick="mostrarTela('telaAgendamentos'); listarAgendamentos()">Agendamentos</button>
+        </section>
+
+        <section id="telaAlunos" class="card" style="display:none">
+            <button onclick="mostrarTela('painel')">Voltar</button>
+            <h2>Cadastro de Alunos</h2>
+
+            <form id="formAluno">
+                <label>Nome</label>
+                <input type="text" id="nomeAluno" required>
+
+                <label>CPF</label>
+                <input type="text" id="cpfAluno" required>
+
+                <label>Personal</label>
+                <select id="personalAluno" required></select>
+
+                <button type="submit">Cadastrar Aluno</button>
+            </form>
+
+            <p id="mensagemAluno"></p>
+            <h3>Alunos cadastrados</h3>
+            <div id="listaAlunos"></div>
+        </section>
+
+        <section id="telaPersonals" class="card" style="display:none">
+            <button onclick="mostrarTela('painel')">Voltar</button>
+            <h2>Personals</h2>
+
+            <input type="text" id="buscaPersonal" placeholder="Pesquisar pelo nome">
+            <button onclick="listarPersonals()">Pesquisar</button>
+
+            <div id="listaPersonals"></div>
+
+            <h3>Editar Personal</h3>
+            <form id="formPersonal">
+                <input type="hidden" id="idPersonal">
+
+                <label>Nome</label>
+                <input type="text" id="nomePersonal" required>
+
+                <label>CPF</label>
+                <input type="text" id="cpfPersonal" required>
+
+                <button type="submit">Salvar alterações</button>
+            </form>
+            <p id="mensagemPersonal"></p>
+        </section>
+
+        <section id="telaAgendamentos" class="card" style="display:none">
+            <button onclick="mostrarTela('painel')">Voltar</button>
+            <h2>Agendamentos</h2>
+
+            <div id="listaAgendamentos"></div>
+
+            <h3>Alterar data do agendamento</h3>
+            <form id="formAgendamento">
+                <label>ID do agendamento</label>
+                <input type="number" id="idAgendamento" required>
+
+                <label>Nova data e hora</label>
+                <input type="datetime-local" id="dataAgendamento" required>
+
+                <button type="submit">Atualizar agendamento</button>
+            </form>
+            <p id="mensagemAgendamento"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
